@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Billing</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<style>
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 40px;
+  background: #26272b;
+  text-align: center;
+}
+</style>
+</head>
+<body  >
+	<header>
+  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <a class="navbar-brand" href="#"><img src="/images/logo.png" style="height:30px;width:120px"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item ">
+          <a class="nav-link" href="/inventory"><i class="fa fa-home"></i> Inventory</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/aitem"><i class="fa fa-code-fork"></i> Add item</a>
+        </li>
+           <li class="nav-item">
+          <a class="nav-link" href="/update"><i class="fa fa-bandcamp"></i> UpdateItem</a>
+        </li>
+           <li class="nav-item">
+          <a class="nav-link" href="/confirm"><i class="fa fa-first-order"></i> Confirmation</a>
+        </li>
+           <li class="nav-item active">
+          <a class="nav-link" href="/billgeneration"><i class="fa fa-money"></i> Billing<span class="sr-only">(current)</span></a>
+        </li>
+         </li>
+            <li class="nav-item">
+          <a class="nav-link" href="/adduser"><i class="fa fa-user"></i> Add-User</a>
+        </li>
+      </ul>
+      <div class="nav-text">
+          <a class="nav-link" style="color:white" href="/alert"><i class="fa fa-bell-o"></i> </a>
+      
+      </div>
+      <div class="nav-text">
+          <a class="nav-link" style="color:white" href="/logout"><i class="fa fa-power-off"></i> Logout</a>
+      
+      </div>
+      
+       
+    </div>
+  </nav>
+</header>
+
+		<br>
+		<br>
+		<br>
+		<div id="customerdetails">
+			 <h6>CUSTOMER DETAILS</h6>
+			<form class="row" style="display:flex;">
+		<div class="col-md-2.5">
+	<div class="form-group">
+	 
+    <input type="text" class="form-control" name="invoiceid" placeholder="InvoiveId" >
+    </div> 
+    </div>
+    <div class="col-md-2.5">
+    <div class="form-group">
+ 
+    <input type="text" class="form-control" name="customerName" placeholder="CustomerName">
+    </div>
+    </div> 
+    <div class="col-md-2.5">
+    <div class="form-group">
+	  
+    <input type="text" class="form-control" name="phone" placeholder="Ph-Number">
+    </div>
+    </div>
+	</form>
+		</div>
+		
+		
+		<table class="table">
+	<thead>
+		<tr class="table-primary" style="text-transform:uppercase;text-align:center">
+		<th>s.no</th>
+		<th>Name</th>
+		<th>Quantity</th>
+		<th>Price</th>
+		<th>Total Price</th>
+		
+		</tr>
+	</thead>
+	
+	  	<tbody id=tableData style="text-align:center"></tbody>
+	</table>
+	<button onclick="addrow()"> add row</button>
+
+	
+ 		
+	<!-- <form class="row" style="display:flex;" action="additemstobill" method="POST" >
+
+		<div class="col-md-2" >
+	
+	<div class="form-group">
+	
+      <h6>ADD ITEM</h6>
+    </div> 
+	</div>
+	<div class="col-md-2.5" >
+	
+	<div class="form-group">
+	
+    <input type="text" class="form-control" name="name" placeholder="Item Name" >
+    </div> 
+	</div>
+	<div class="col-md-2.5">
+		<div class="form-group">
+    
+    <input type="number" class="form-control" name="quantity" placeholder="Quantity">
+    </div>
+	</div>
+     <div class="col-md-2.5">
+     <div class="form-group">
+    
+    <input type="text" class="form-control" name="category" placeholder="Category">
+    </div>
+     
+     </div>
+     <div class="col-md-2">
+      <button type="submit" class="btn btn-primary">Submit</button>
+     </div>
+
+</form>
+	
+	
+		<form class="row" style="display:flex;"action="printinvoice" method="POST" >
+			<div class="col-md-2">
+	<div class="form-group">
+	 <h6>CUSTOMER DETAILS</h6>
+    </div> 
+    </div>
+		<div class="col-md-2.5">
+	<div class="form-group">
+	 
+    <input type="text" class="form-control" name="invoiceid" placeholder="InvoiveId" >
+    </div> 
+    </div>
+    <div class="col-md-2.5">
+    <div class="form-group">
+ 
+    <input type="text" class="form-control" name="customerName" placeholder="CustomerName">
+    </div>
+    </div> 
+    <div class="col-md-2.5">
+    <div class="form-group">
+	  
+    <input type="text" class="form-control" name="phone" placeholder="Ph-Number">
+    </div>
+    </div>
+    <div class="col-md-2">
+	<button type="submit" class="btn btn-primary" onclick="window.print()">Print Bill</button>
+	</div>
+	</form> -->
+	<br>
+	<br>
+	<br>
+	 <footer>
+</footer>
+				
+</body>
+<script>
+/* function getData(){
+	var url = "getinvoiceitems";
+if(window.XMLHttpRequest){  
+	requestLogin = new XMLHttpRequest();  
+}  
+else if(window.ActiveXObject){  
+	requestLogin = new ActiveXObject("Microsoft.XMLHTTP");  
+}  
+  
+/*  try{   */
+/* 	requestLogin.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+        	getLoginInfo(); 
+       }
+    }
+	requestLogin.open("GET",url,true);  
+	requestLogin.send(); */
+	
+	
+/*  } catch(e){alert("Unable to connect to server");}  */
+/* }  
+
+function getLoginInfo(){  
+if(requestLogin.readyState==4 ){  
+var val=requestLogin.responseText; 
+val=val.trim();
+console.log("val ="+val);
+ val1 = val.split("+");
+const tableBody=document.getElementById('tableData');
+let dataHtml='';
+for(let i of val1){
+	var obj=JSON.parse(i);
+	dataHtml+=`<tr><td>${obj.id}</td><td>${obj.name}</td><td>${obj.Quantity}</td><td>${obj.Price}</td><td>${obj.TotalPrice}</td></tr>`;
+	
+}
+console.log(dataHtml);
+tableBody.innerHTML=dataHtml; 
+
+}} */ 
+function addrow(){
+	const tableBody=document.getElementById('tableData');
+	
+	let dataHtml=tableBody.innerHTML;
+	if(dataHtml)
+		{
+	dataHtml+=`<tr><td><input type="text" value="1"></td><td><form><input type="text"></form></td><td><form><input type="text"></form></td><td><form><input type="text"></form></td><td><form><input type="text"></form></td></tr>`;
+		}
+	else{
+		dataHtml=`<tr><td><input type="text" value=""></td><td><form><input type="text"></form></td><td><form><input type="text"></form></td><td><form><input type="text"></form></td><td><form><input type="text"></form></td></tr>`;
+	}
+	console.log(dataHtml);
+	tableBody.innerHTML=dataHtml;
+	
+}
+
+</script>
+</html>

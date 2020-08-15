@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Inventory</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<style>
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 40px;
+  background: #26272b;
+  text-align: center;
+}
+</style>
+</head>
+<body onload = "getData()">
+	<header>
+  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <a class="navbar-brand" href="#"><img src="/images/logo.png" style="height:30px;width:120px"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="/inventory"><i class="fa fa-home"></i> Inventory<span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/aitem"><i class="fa fa-code-fork"></i> Add item</a>
+        </li>
+           <li class="nav-item">
+          <a class="nav-link" href="/update"><i class="fa fa-bandcamp"></i> UpdateItem</a>
+        </li>
+           <li class="nav-item">
+          <a class="nav-link" href="/confirm"><i class="fa fa-first-order"></i> Confirmation</a>
+        </li>
+           <li class="nav-item">
+          <a class="nav-link" href="/billgeneration"><i class="fa fa-money"></i> Billing</a>
+        </li>
+         </li>
+            <li class="nav-item">
+          <a class="nav-link" href="/adduser"><i class="fa fa-user"></i> Add-User</a>
+        </li>
+      </ul>
+      <div class="nav-text">
+          <a class="nav-link" style="color:white" href="/alert"><i class="fa fa-bell-o"></i> </a>
+      
+      </div>
+      <div class="nav-text">
+          <a class="nav-link" style="color:white" href="/logout"><i class="fa fa-power-off"></i> Logout</a>
+      
+      </div>
+      
+       
+    </div>
+  </nav>
+</header>
+
+		<br>
+		<br>
+		
+	<table class="table">
+	<thead>
+		<tr class="table-primary" style="text-transform:uppercase;text-align:center">
+		<th>s.no</th>
+		<th>Name</th>
+		<th>Category</th>
+		<th>Quantity</th>
+		<th>Shelf</th>
+		<th>DuringTransport</th>
+		<th>DuringShopping</th>
+		<th>Expired</th>
+		</tr>
+	</thead>
+	
+	  	<tbody id=tableData style="text-align:center"></tbody>
+	</table>
+	<br>
+	<br>
+	<br>
+	 <footer>
+</footer>
+
+		
+</body>
+<script>
+function getData(){
+	var url = "getinventory";
+if(window.XMLHttpRequest){  
+	requestLogin = new XMLHttpRequest();  
+}  
+else if(window.ActiveXObject){  
+	requestLogin = new ActiveXObject("Microsoft.XMLHTTP");  
+}  
+  
+/*  try{   */
+	requestLogin.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+        	getLoginInfo(); 
+       }
+    }
+	requestLogin.open("GET",url,true);  
+	requestLogin.send();
+	
+	
+/*  } catch(e){alert("Unable to connect to server");}  */
+}  
+
+function getLoginInfo(){  
+if(requestLogin.readyState==4 ){  
+var val=requestLogin.responseText; 
+val=val.trim();
+console.log("val ="+val);
+val1 = val.split("+");
+const tableBody=document.getElementById('tableData');
+let dataHtml='';
+for(let i of val1){
+	var obj=JSON.parse(i);
+	dataHtml+=`<tr><td>${obj.id}</td><td>${obj.name}</td><td>${obj.Category}</td><td>${obj.Quantity}</td><td>${obj.Shelf}</td><td>${obj.DuringTransport}</td><td>${obj.DuringShopping}</td><td>${obj.Expired}</td></tr>`;
+	
+}
+console.log(dataHtml);
+tableBody.innerHTML=dataHtml;
+}}
+</script>
+
+</html>

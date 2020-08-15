@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Confirmation</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<style>
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 40px;
+  background: #26272b;
+  text-align: center;
+}
+</style>
+</head>
+<style>
+	
+</style>
+<body >
+
+	<header>
+  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <a class="navbar-brand" href="#"><img src="/images/logo.png" style="height:30px;width:120px"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="/inventory"><i class="fa fa-home"></i> Inventory</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/aitem"><i class="fa fa-code-fork"></i> Add item</a>
+        </li>
+          <li class="nav-item">
+          <a class="nav-link" href="/update"><i class="fa fa-bandcamp"></i> UpdateItem</a>
+        </li>
+           <li class="nav-item active">
+          <a class="nav-link" href="/confirm"><i class="fa fa-first-order"></i> Confirmation<span class="sr-only">(current)</span></a>
+        </li>
+           <li class="nav-item">
+          <a class="nav-link" href="/billgeneration"><i class="fa fa-money"></i> Billing</a>
+        </li>
+            <li class="nav-item">
+          <a class="nav-link" href="/adduser"><i class="fa fa-user"></i> Add-User</a>
+        </li>
+      </ul>
+      <div class="nav-text">
+          <a class="nav-link" style="color:white" href="/alert"><i class="fa fa-bell-o"></i> </a>
+      
+      </div>
+      <div class="nav-text">
+          <a class="nav-link" style="color:white" href="/logout"><i class="fa fa-power-off"></i> Logout</a>
+      
+      </div>
+      
+    </div>
+  </nav>
+</header>
+	<div class="page-header">
+		<br>
+		<br>
+	
+		<!-- <h1 style="text-transform:uppercase">Confirm</h1> -->
+		</div>
+	<table class="table">
+	<thead>
+		<tr class="table-primary" style="text-align:center">
+		<!-- <th >S.NO</th> -->
+		<th>NAME</th>
+		<th>QUANTITY</th>
+		<th>CATEGORY</th>
+		<th>TRANSPORT DAMAGE</th>
+		<th></th>
+		</tr>
+	</thead>
+	<th:block th:each="product : ${obj}">
+			<tr>
+				
+				<td style="text-align:center"th:text=${product.name}></td>
+				<td style="text-align:center"th:text=${product.quantity}></td>
+				<td style="text-align:center"th:text=${product.category}></td>
+				<td style="text-align:center"th:text=${product.damage}></td>
+				<td><button class="btn btn-success" onclick="window.location.href='http://localhost:8080/confirmupdate';"><i class="fa fa-check"></i>Confirm</button><button class="btn btn-danger" onclick="window.location.href='http://localhost:8080/cancelupdate';"><i class="fa fa-times"></i>Cancel</button></td>
+
+			</tr>
+			</th:block>
+	  	
+	  	
+	</table>
+	<br>
+	<br>
+	<br>	
+	 <footer>
+</footer>
+</body>
